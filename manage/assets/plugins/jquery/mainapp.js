@@ -14,33 +14,18 @@ $("#loginb").click(function(){
 //////////////////////////////////////////////// checklogin ////////////////////////
 
 function initmaster(){
+	var ret = false ;
 	var Uemail = getCookie("useremail");
 	var session = getCookie("qrcodeapp");
-	//console.log
-  var values = JSON.stringify( { "email" : Uemail  , "session_id" : session } );
- $.ajax({
-	 
-        url: "http://ec2-52-200-186-135.compute-1.amazonaws.com/api_twominutes/index.php/api/login",
-        type: "post",
-        data: values ,
-        success: function (response) {
-			if(response.success){
-			window.location = "http://127.0.0.1/qrcodeapp/manage/"+session;  
-			}else{
-				window.location = "http://127.0.0.1/qrcodeapp/";
-				
-			}		   
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-           console.log(textStatus, errorThrown);
-        }
-
-	
-    });
-	
+	if(Uemail && session){
+		
+		ret = true
+		
+	}
+	return ret ;
 	
 }	
-
+///////////////////////////////
 ////////////////////////////////////////url /////////////////
 $.urlParam = function(name){
 	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -60,8 +45,8 @@ function Login(){
         success: function (response) {
 			if(response.success){
 			// set cookies
-			setCookie("qrcodeapp",response.session, 365);
-			setCookie("useremail",Uemail, 365);
+			setCookie("qrcodeapp",response.session, 1);
+			setCookie("useremail",Uemail, 1);
 			window.location = "http://127.0.0.1/qrcodeapp/manage/";
 			// redirect    
 			}		   
@@ -200,6 +185,16 @@ function build_video_card( video ){
 
 
 //////////////////////////////////////////////////////////////
+
 function loadvideo(){
+	    if(initmaster()){
 		get_user_video();
+		}else {
+		  window.location = "http://127.0.0.1/qrcodeapp/";	
+			
+		}
+		
 	}
+//////////////////////////////////////////////////// angular //////////
+
+
