@@ -88,7 +88,7 @@ function eraseCookie(name) {
 ///////////////////////////////////////////////////////////// add a video ///////////////////////
 
 function get_user_video(){
-  var values = JSON.stringify( { "member_id" : 12 } );
+  var values = JSON.stringify( { "member_id" : 1 } );
    $("#videocard").html('<div class="col-md-12" ><h4 class="card-title">Gallery page</h4><h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6></div>');
  $.ajax({
 	 
@@ -124,7 +124,7 @@ function get_user_video(){
 	
 }
 ///////////////////////////////// video object /////
-function urldecode(url) {
+function urldecode(url) { 
   return decodeURIComponent(url.replace(/\+/g, ' '));
 }
 /////////////////////////////// build video card ////////////
