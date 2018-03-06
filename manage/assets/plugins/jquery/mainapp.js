@@ -1,7 +1,7 @@
 
 function openmodal(video_id , video_status , video_path , qrcode_path , video_title){ 
 	$('#video_info').html('<h4>'+video_title+'</h4><video src="'+ video_path +'"   controls style="height:180px;"></video>');
-	$('#qrcode').html('<img src="'+qrcode_path+'"></img>');
+	$('#qrcode').html('<button type="button" id="downloadqrcode" onclick="saveFile1(\'' + qrcode_path + '\')" crossorigin="anonymous" class="btn waves-effect waves-light btn-primary">Download Qrcode</button><img src="'+qrcode_path+'"></img>');
 	$('#videoModal').modal('show');
 	
 }
@@ -88,8 +88,8 @@ function eraseCookie(name) {
 ///////////////////////////////////////////////////////////// add a video ///////////////////////
 
 function get_user_video(){
-  var values = JSON.stringify( { "member_id" : 1 } );
-   $("#videocard").html('<div class="col-md-12" ><h4 class="card-title">Gallery page</h4><h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6></div>');
+  var values = JSON.stringify( { "member_id" : 12 } );
+   $("#videocard").html('<div class="col-md-12" ></div>');
  $.ajax({
 	 
         url: "http://ec2-52-200-186-135.compute-1.amazonaws.com/api_twominutes/index.php/api/get_user_videos",
@@ -97,7 +97,7 @@ function get_user_video(){
         data: values ,
         success: function (response) {
            var videocard = ''; 
-           for (var i = 0 ; i < response.length ; i++){
+           for (var i = 0 ; i < 3 ; i++){
 			   
 			  videocard += build_video_card(response[i]);
 			  
@@ -112,15 +112,14 @@ function get_user_video(){
 	
     });
 	 
-	$("#videocard").append('<div class="col-md-7 col-4 align-self-center">'+
+	/**$("#videocard").append(
                        '<div class="d-flex m-t-10 justify-content-end">'+
         
                             '<div class="">'+
                                 '<button id="add_video" onclick="openaddvideomodal()" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-user text-white"></i></button>'+
                             '</div>'+
-                        '</div>'+
-					
-                    '</div>');
+                        '</div>'
+					);**/
 	
 }
 ///////////////////////////////// video object /////
@@ -183,7 +182,26 @@ function build_video_card( video ){
     });
 });
 
-
+//////////////////////////// download qrcode /////////////////
+  function saveFile(url){ alert(url);}
+  function saveFile1(url) {
+  // Get file name from url.
+  var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = 'blob';
+  xhr.onload = function() {
+    var a = document.createElement('a');
+    a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
+    a.download = filename; // Set the file name.
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    delete a;
+  };
+  xhr.open('GET', url);
+  xhr.setRequestHeader("Access-Control-Allow-Origin","anonymous");
+  xhr.send();
+}
 //////////////////////////////////////////////////////////////
 
 function loadvideo(){
