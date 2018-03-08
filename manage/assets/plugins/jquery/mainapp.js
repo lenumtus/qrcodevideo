@@ -88,7 +88,7 @@ function eraseCookie(name) {
 ///////////////////////////////////////////////////////////// add a video ///////////////////////
 
 function get_user_video(){
-  var values = JSON.stringify( { "member_id" : 12 } );
+  var values = JSON.stringify( { "member_email" : getCookie("useremail") } );
    $("#videocard").html('<div class="col-md-12" ></div>');
  $.ajax({
 	 
