@@ -168,12 +168,21 @@ function build_video_card( video ){
 			$("#submitvideo").submit(function(e) {
     e.preventDefault();    
     var formData = new FormData(this);
+            var options = {
+     theme:"sk-circle",
+     message:'Upload the video ....',
+     backgroundColor:"#1847B1",
+     textColor:"white"
+};
 
+   HoldOn.open(options);
     $.ajax({
         url: 'http://ec2-52-200-186-135.compute-1.amazonaws.com/api_twominutes/index.php/api/upload_video/',
         type: 'POST',
         data: formData,
         success: function (data) {
+            HoldOn.close();
+            $('#addvideoModal').modal('toggle'); 
             alert(data)
         },
         cache: false,
