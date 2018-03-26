@@ -97,7 +97,7 @@ function get_user_video(){
         data: values ,
         success: function (response) {
            var videocard = ''; 
-           for (var i = 0 ; i < 3 ; i++){
+           for (var i = 0 ; i < 7 ; i++){
 			   
 			  videocard += build_video_card(response[i]);
 			  
@@ -131,7 +131,7 @@ function urldecode(url) {
 function build_video_card( video ){ 	
 	var video_path = urldecode(video.videos_path);
 	var qrcode_path = urldecode(video.qrcode_path);
-	var title = urldecode(video.qrcode_path);
+	var title = urldecode(video.videos_title);
 	var html_card = '<div class="col-lg-3 col-md-6">'+
                         '<div class="card">'+
                             '<div class="el-card-item">'+
@@ -145,7 +145,7 @@ function build_video_card( video ){
                                     '</div>'+
                                 '</div>'+
                                 '<div class="el-card-content">'+
-                                    '<h3 class="box-title">Project title</h3> <small>subtitle of project</small>'+
+                                    '<h3 class="box-title">'+video.videos_title+'</h3> <small>subtitle of project</small>'+
                                     '<br/> </div>'+
                             '</div>'+
                         '</div>'+
