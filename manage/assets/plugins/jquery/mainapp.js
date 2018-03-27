@@ -1,6 +1,29 @@
 
 function openmodal(video_id , video_status , video_path , qrcode_path , video_title){ 
-	$('#video_info').html('<h4>'+video_title+'</h4><video src="'+ video_path +'"   controls style="height:180px;"></video>');
+  $('#myModalLabel').html(video_title);
+	$('#video_info').html('<div class="row"><div class="col-lg-6 col-md-6">'+
+                        '<div class="card">'+
+                            '<div class="card-body">'+
+                                '<div class="d-flex flex-row">'+
+                                    '<div class="round round-sm align-self-center round-info"><i class="ti-hand-point-up"></i></div>'+
+                                    '<div class="m-l-10 align-self-center">'+
+                                       ' <h6 class="m-b-0 font-light">100</h6>'+
+                                        '<h6 class="text-muted m-b-0">likes</h6></div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div><div class="col-lg-6 col-md-6">'+
+                        '<div class="card">'+
+                            '<div class="card-body">'+
+                                '<div class="d-flex flex-row">'+
+                                    '<div class="round round-sm align-self-center round-info"><i class="fa fa-eye"></i></div>'+
+                                    '<div class="m-l-10 align-self-center">'+
+                                       ' <h6 class="m-b-0 font-light">23</h6>'+
+                                        '<h6 class="text-muted m-b-0">Views</h6></div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div></div><video src="'+ video_path +'"   controls style="height:180px;"></video>');
 	$('#qrcode').html('<button type="button" id="downloadqrcode" onclick="saveFile1(\'' + qrcode_path + '\')" crossorigin="anonymous" class="btn waves-effect waves-light btn-primary">Download Qrcode</button><img src="'+qrcode_path+'"></img>');
 	$('#videoModal').modal('show');
 	
@@ -145,7 +168,7 @@ function build_video_card( video ){
                                     '</div>'+
                                 '</div>'+
                                 '<div class="el-card-content">'+
-                                    '<h3 class="box-title">'+video.videos_title+'</h3> <small>subtitle of project</small>'+
+                                    '<h3 class="box-title">'+video.videos_title+'</h3><div class="row"><div class = "col-lg-3 col-md-6"><span class="badge badge-primary">11 views</span></div><div class = "col-lg-3 col-md-6"><span class="badge badge-info">100 likes</span></div></div>'+
                                     '<br/> </div>'+
                             '</div>'+
                         '</div>'+
@@ -224,4 +247,4 @@ function loadvideo(){
 	}
 //////////////////////////////////////////////////// angular //////////
 
-
+  /////////////////////////////////////////////////////////////////////////////

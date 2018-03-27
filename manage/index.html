@@ -306,7 +306,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                                                <h4 class="modal-title" id="myModalLabel"></h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             </div>
                                             <div class="modal-body">
@@ -314,9 +314,9 @@
 											
 											<div class="vtabs ">
                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
-                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#video" role="tab"><span><i class="ti-home"></i></span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#qrcode" role="tab"><span><i class="ti-user"></i></span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#editvideo" role="tab"><span><i class="ti-email"></i></span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#video" role="tab"><span><i class="mdi mdi-filmstrip"></i></span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#qrcode" role="tab"><span><i class="mdi mdi-qrcode-scan"></i></span></a> </li>
+                                       <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#editvideo" role="tab"><span><i class="ti-settings"></i></span></a> </li> -->
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content">
@@ -329,7 +329,13 @@
                                         <div class="tab-pane  p-20" id="qrcode" role="tabpanel">
 										
 										</div>
-                                        <div class="tab-pane p-20" id="editvideo" role="tabpanel">3</div>
+                                        <div class="tab-pane p-20" id="editvideo" role="tabpanel">
+                                              <p class="text-muted font-13">Downloadable ?</p>
+                                           <div class="m-b-30">
+                                            <input type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="Yes" data-off-text="No">
+                                            <input type="checkbox" checked data-on-color="info" data-off-color="success" data-on-text="1" data-off-text="0"> </div> 
+                                   
+                                        </div>
                                     </div>
                                 </div>
 											
@@ -451,7 +457,6 @@
 	<script>
 	$(document).ready(function(){
 	      loadvideo();
-
 	});
 	</script>
 </body>
