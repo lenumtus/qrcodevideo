@@ -367,19 +367,18 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Overflowing text to show scroll behavior</h4>
+                                                <h4>Note video must not be greater than 15MB</h4> 
 												<form id="submitvideo" method="post" enctype="multipart/form-data">
 												<div class="form-group">
-													<label>Text area</label>
-													<textarea class="form-control" rows="5"></textarea>
+													<label>Video Title</label>
+													<textarea class="form-control" name="video_title" rows="3"></textarea>
 												</div>
 												<div class="form-group">
-													<label>Text area</label>
-													<input type="text" id="member_email_id" name="member_email" class="form-control" value='12' placeholder="placeholder">
-													 <input type="text" name="video_title" class="form-control" placeholder="placeholder">
+													<input type="hidden" id="member_email_id" name="member_email" class="form-control" value='12' placeholder="placeholder">
+													 <!--<input type="text" name="video_title" class="form-control" placeholder="placeholder">-->
 												</div>
 												<div class="form-group">
-                                    <label>Default file upload</label>
+                                    <label>Upload video file</label>
                                     <input type="file" class="form-control" name="video" id="exampleInputFile" aria-describedby="fileHelp">
                                 </div> 
                                                <div>
