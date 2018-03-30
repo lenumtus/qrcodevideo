@@ -82,6 +82,32 @@ function Login(){
     });
 	
 }
+function Registerfunct(){
+  var members_email = $('#members_email').val();
+  var members_firstname = $('#members_firstname').val();
+  var members_surname = $('#members_surname').val();
+  var members_password = $('#members_password').val();
+  var values = JSON.stringify( { "members_email":members_email,  "members_firstname":members_firstname ,"members_surname":members_surname ,"members_password":members_password ,"members_deleted":"1"} );
+ $.ajax({
+   
+        url: "http://ec2-52-200-186-135.compute-1.amazonaws.com/api_twominutes/index.php/api/register",
+        type: "post",
+        data: values ,
+        success: function (response) {
+            console.log(response.success);
+      if(response.success){
+      window.location = "http://127.0.0.1/qrcodeapp/";
+      // redirect    
+      }      
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
+        }
+
+  
+    });
+  
+}
 ///////////////////////////////////////////////////////////// manipulate cookies /////////////////////
 
    function setCookie(name,value,days) {
@@ -189,7 +215,10 @@ function build_video_card( video ){
 
 			
 			$("#submitvideo").submit(function(e) {
-    e.preventDefault();    
+    e.preventDefault();  
+    var Uemail = getCookie("useremail");
+    $("#member_email_id").val(Uemail) ;
+    console.log($("#member_email_id").val());
     var formData = new FormData(this);
             var options = {
      theme:"sk-circle",

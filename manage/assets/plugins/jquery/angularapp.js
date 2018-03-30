@@ -21,18 +21,20 @@ var scotchApp = angular.module('qrcodeApp', ['ngRoute']);
 			scotchApp.controller('loginController' ,  function($scope ) {
                 
 
-                /**$http({
-                    method: 'POST',
-                    url: 'userauth.php',
-                    data: encodedString,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                })**/
 
                 $scope.Login = function (){
                   Loginfunct();
 
                 }
-    });          
+    }); 
+    scotchApp.controller('registerController' ,  function($scope ) {
+                
+
+                $scope.Register = function (){
+                  Registerfunct();
+
+                }
+    });             
 
 function Loginfunct(){
     var Uemail = $('#useremail').val();
@@ -59,4 +61,30 @@ function Loginfunct(){
     
     });
     
+}
+function Registerfunct(){
+  var members_email = $('#members_email').val();
+  var members_firstname = $('#members_firstname').val();
+  var members_surname = $('#members_surname').val();
+  var members_password = $('#members_password').val();
+  var values = JSON.stringify( { "members_email":members_email,  "members_firstname":members_firstname ,"members_surname":members_surname ,"members_password":members_password ,"members_deleted":"1"} );
+ $.ajax({
+   
+        url: "http://ec2-52-200-186-135.compute-1.amazonaws.com/api_twominutes/index.php/api/register",
+        type: "post",
+        data: values ,
+        success: function (response) {
+            console(response.success);
+      if(response.success){
+      window.location = "http://127.0.0.1/qrcodeapp/";
+      // redirect    
+      }      
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
+        }
+
+  
+    });
+  
 }
