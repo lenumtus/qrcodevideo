@@ -146,7 +146,7 @@ function get_user_video(){
         data: values ,
         success: function (response) {
            var videocard = ''; 
-           for (var i = 0 ; i < 7 ; i++){
+           for (var i = 0 ; i < response.length ; i++){
 			   
 			  videocard += build_video_card(response[i]);
 			  
@@ -185,7 +185,7 @@ function build_video_card( video ){
                         '<div class="card">'+
                             '<div class="el-card-item">'+
                                 '<div class="el-card-avatar el-overlay-1">'+
-                                    '<video src="assets/images/big/video1.mp4"  controls style="height:180px;"></video>'+
+                                    '<video src="'+ video_path +'"  muted controls style="height:180px;"></video>'+
                                     '<div class="el-overlay">'+
                                         '<ul class="el-info">'+
                                             '<li><a id="videobutton" onclick="openmodal(\'' + video.videos_id + '\' , \'' + video.videos_status + '\', \'' + video_path + '\', \'' + qrcode_path + '\', \'' + title + '\')" class="btn default btn-outline image-popup-vertical-fit"><i class="icon-magnifier"></i></a></li>'+
